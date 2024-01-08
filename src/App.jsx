@@ -1,40 +1,13 @@
-import React from "react";
 import Header from "./components/header/Header";
-import FoodCard from "./components/FoodCard";
+import Body from "./components/Body";
 
 function App() {
-  
-
   return (
-  <div className="bg-gray-800">
-     <Header />
-    <div className="flex flex-wrap justify-center ">
-    <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
-     <FoodCard />
+    <div className="bg-gray-800">
+      <Header />
+      <Body />
     </div>
-  </div>
-  )
+  );
 }
 
-export default App
+export default App;
