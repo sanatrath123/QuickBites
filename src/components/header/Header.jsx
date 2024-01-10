@@ -1,5 +1,5 @@
-import SearchBox from '../SearchBox.jsx'
 
+import {Link}  from 'react-router-dom';
 
 
 function Header() {
@@ -8,11 +8,11 @@ function Header() {
         <nav className='flex items-center justify-between border-solid border-2 border-indigo-600'>
           {/* logo */}
           <div>
-            <img src="/public/Logo1.jpg" alt="logo" className="w-40 h-40" />
+          <img src="../../Logo1.jpg" alt="logo" className="w-40 h-40" ></img>
           </div>
   
           {/* Search box */}
-          <SearchBox />
+          
   
           {/* header list */}
           <ul className='flex flex-row p-2 space-x-9'>

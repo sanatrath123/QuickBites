@@ -1,19 +1,17 @@
 
-
-
 function FoodCard(props) {
  
   const res = props
 
   
-     console.log(res)
+    
   return (
     <div className='m-4 p-4'>
-        <img src={res.img} alt="resturant" className='h-40 w-40'/>
-        <h2 className='text-boald text-cyan-100 mt-2'>{res.name}</h2>
-        <h4 className='text-cyan-100'>{res.place}</h4>
-        <h4 className='text-cyan-100'>{res.rating}</h4>
-        <h4 className='text-cyan-100'>{res.time}</h4>
+        <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${res.info.cloudinaryImageId}`}alt="resturant" className='h-40 w-40'/>
+        <h2 className='text-boald text-cyan-100 mt-2'>{res.info.name}</h2>
+        <h4 className='text-cyan-100'>{res.info.locality}</h4>
+        <h4 className='text-cyan-100'>{res.info.avgRating}</h4>
+        <h4 className='text-cyan-100'>{res.info.deliveryTime}</h4>
     </div>
   )
 }

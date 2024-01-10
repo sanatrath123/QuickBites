@@ -4,8 +4,8 @@ import Body from "./components/Body";
 function App() {
   return (
     <div className="bg-gray-800">
-      <Header />
-      <Body />
+     <Header/>
+     <Body/>
     </div>
   );
 }
