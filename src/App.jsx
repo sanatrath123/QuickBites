@@ -1,11 +1,12 @@
 import Header from "./components/header/Header";
-import Body from "./components/Body";
+import { Outlet } from "react-router-dom";
 
 function App() {
+  
   return (
-    <div className="bg-gray-800">
+    <div className="">
      <Header/>
-     <Body/>
+    <Outlet/>
     </div>
   );
 }

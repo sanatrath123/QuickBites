@@ -1,24 +1,25 @@
 
-import {Link}  from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 function Header() {
     return (
       <header className=' mx-auto max-w-screen-xl mt-2 '>
-        <nav className='flex items-center justify-between border-solid border-2 border-indigo-600'>
+        <nav className='flex items-center justify-between border-solid border-2 border-indigo-600 content-center'>
           {/* logo */}
-          <div>
-          <img src="../../Logo1.jpg" alt="logo" className="w-40 h-40" ></img>
+          <div className='flex flex-wrap  '>
+          <img src="../../Logo1.jpg" alt="logo" className="w-20 h-20" ></img>
+          <div className='font-bold text-2xl m-2 p-2 text-orange-600'>
+              QUICKBITES
           </div>
-  
-          {/* Search box */}
-          
-  
+           <h2 className="mt-4 ml-2 p-1">Deliver To</h2>
+           <h2 className="text-red-600 mt-4 ml-0.5 p-1">Bhubaneswar</h2>
+          </div>
           {/* header list */}
           <ul className='flex flex-row p-2 space-x-9'>
-            <li className='text-xl text-cyan-100'>HOME</li>
-            <li className='text-xl text-cyan-100'>ACCOUNT</li>
-            <li className='text-xl text-cyan-100'>SETTING</li>
+            <li className='text-xl font-semibold text-cyan-700'><Link to={"/"}>HOME</Link></li>
+            <li className='text-xl font-semibold text-cyan-700'><Link to={"/about"}>About</Link></li>
+            <li className='text-xl font-semibold text-cyan-700'>SETTING</li>
           </ul>
         </nav>
       </header>
