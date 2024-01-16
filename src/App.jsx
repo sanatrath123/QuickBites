@@ -5,8 +5,9 @@ function App() {
   
   return (
     <div className="">
-     <Header/>
-    <Outlet/>
+  <Header/>
+  <Outlet/>
+
     </div>
   );
 }

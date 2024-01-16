@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FoodCard from './FoodCard'
 import {ResData} from '../utils/Mockdata'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -9,19 +10,21 @@ function Body() {
 const [listres , setListres] = useState()
 const [fliterData , setFilterData] = useState([])
 const [search , setSearch] = useState()
- 
-//if fetch is not working 
+ const navigate = useNavigate()
 
+//if fetch is not working
 useEffect(()=>{
 StaticData()
+console.log("useeffect called")
 },[])
 
 const StaticData = ()=>{
   const data = ResData[0]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
- console.log(data)
  setListres(data)
  setFilterData(data)
 }
+
+
 
 
 //if fetch is working add a state variable 
@@ -31,9 +34,10 @@ const StaticData = ()=>{
 // },[])
 
 //  create function of fetch data
+//put the values inside listres and filterres
 // const fetchData = async () => {
 //   console.log("Enter in fetchdata")
-//   const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=20.23917854088893&lng=85.827534198761");
+//   const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=20.237942885104747&lng=85.82812193781139");
 //   console.log("data fetched")
 
 //   const json = await data.json();
@@ -45,7 +49,7 @@ const StaticData = ()=>{
 const Handelfilter = ()=>{
 
  const data = listres.filter((res)=>(
-  res.info.avgRating > 3.5
+  res.info.avgRating > 4
 ))
 setFilterData(data)
 }
@@ -75,17 +79,19 @@ setFilterData(data)
 
     {/* top resturant Filter button div */}
   <div className=''> 
- <button onClick={Handelfilter} className='w-2/6 bg-yellow-300 m-2 p-3 text-2xl  '>Top Resturants</button>
+ <button onClick={Handelfilter} className='w-2/6 bg-yellow-300 m-2 p-3 text-2xl  '>click me to get Top Resturants</button>
  </div> 
 
  {/* todo make a banner section */}
 
 
-
 {/* body card */}
+
 <div className='flex flex-wrap justify-center items-center'>
          {fliterData.map((resturant)=>(
+          
           <FoodCard key={resturant.info.id} {...resturant}/>
+          
          ))}
 </div>
 
