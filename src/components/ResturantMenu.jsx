@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuCard";
+import useResturantMenu from "../utils/useResturantMenu";
 
 
 function ResturantMenu() {
   const { resId } = useParams();
-  const [resinfo, setResinfo] = useState({});
- 
- console.log(resId)
-  useEffect(() => {
-    FetchData();
-  }, []);
-
-  const FetchData = async () => {
-    try {
-      const res = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.237942885104747&lng=85.82812193781139&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
-      const json = await res.json();
-      setResinfo(json.data);
-console.log(json.data)
-      
-    } catch (error) {
-      console.error('Error fetching data:', error);
-     
-    }
-  }
+const resinfo = useResturantMenu(resId)
 
 //heading values
   const Headitem = resinfo?.cards?.[2]?.card?.card?.info;
@@ -55,11 +38,8 @@ return (
         ))}
       </div>
     </div>
-  ) : (
+  ) : 
     <p>LOADING</p>
-  )
-);
-
-  }
+)}
 
 export default ResturantMenu;

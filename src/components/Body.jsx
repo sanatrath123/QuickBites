@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FoodCard from './FoodCard'
 import {ResData} from '../utils/Mockdata'
 import { useNavigate } from 'react-router-dom'
-
+import useOnlinestatus from '../utils/useOnlinestatus'
 
 
 function Body() {
@@ -11,7 +11,7 @@ const [listres , setListres] = useState()
 const [fliterData , setFilterData] = useState([])
 const [search , setSearch] = useState()
  const navigate = useNavigate()
-
+const status = useOnlinestatus()
 //if fetch is not working
 useEffect(()=>{
 StaticData()
@@ -63,9 +63,8 @@ setFilterData(data)
 
   setFilterData(data)
  }
-  
-
-  return (
+  return(
+status? (
     
     <div className=''>
       {/* search bar div */}
@@ -96,7 +95,7 @@ setFilterData(data)
 </div>
 
     </div>
-  )
+  ) : <h1>You are offline</h1>)
 }
 
 export default Body

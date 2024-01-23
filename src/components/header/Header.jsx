@@ -1,8 +1,10 @@
 
+import useOnlinestatus from "../../utils/useOnlinestatus";
 import { Link } from "react-router-dom";
 
 
 function Header() {
+  const status = useOnlinestatus()
     return (
       <header className=' mx-auto max-w-screen-xl mt-2 '>
         <nav className='flex items-center justify-between border-solid border-2 border-indigo-600 content-center'>
@@ -17,6 +19,9 @@ function Header() {
           </div>
           {/* header list */}
           <ul className='flex flex-row p-2 space-x-9'>
+          <li className='text-xl font-semibold text-cyan-700'>Status
+         {status ?"✅" :"❌"}
+          </li>
             <li className='text-xl font-semibold text-cyan-700'><Link to={"/"}>HOME</Link></li>
             <li className='text-xl font-semibold text-cyan-700'><Link to={"/about"}>About</Link></li>
             <li className='text-xl font-semibold text-cyan-700'>SETTING</li>
