@@ -3,13 +3,14 @@ import FoodCard from './FoodCard'
 import {ResData} from '../utils/Mockdata'
 import { useNavigate } from 'react-router-dom'
 import useOnlinestatus from '../utils/useOnlinestatus'
-
+import PromotedRes from './PromotedRes'
 
 function Body() {
 
 const [listres , setListres] = useState()
 const [fliterData , setFilterData] = useState([])
 const [search , setSearch] = useState()
+const Promoted = PromotedRes(FoodCard)
  const navigate = useNavigate()
 const status = useOnlinestatus()
 //if fetch is not working
@@ -23,6 +24,8 @@ const StaticData = ()=>{
  setListres(data)
  setFilterData(data)
 }
+
+
 
 
 
@@ -89,9 +92,10 @@ status? (
 <div className='flex flex-wrap justify-center items-center'>
          {fliterData.map((resturant)=>(
           
-          <FoodCard key={resturant.info.id} {...resturant}/>
+          resturant.info.Promoted ? <Promoted key={resturant.info.id} {...resturant} /> :<FoodCard key={resturant.info.id} {...resturant}/>
           
          ))}
+         
 </div>
 
     </div>

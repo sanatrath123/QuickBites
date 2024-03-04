@@ -1,9 +1,13 @@
 
+import { useSelector } from "react-redux";
 import useOnlinestatus from "../../utils/useOnlinestatus";
 import { Link } from "react-router-dom";
 
 
 function Header() {
+  const cartArr = useSelector((state)=>state.cart.value)
+
+
   const status = useOnlinestatus()
     return (
       <header className=' mx-auto max-w-screen-xl mt-2 '>
@@ -24,7 +28,8 @@ function Header() {
           </li>
             <li className='text-xl font-semibold text-cyan-700'><Link to={"/"}>HOME</Link></li>
             <li className='text-xl font-semibold text-cyan-700'><Link to={"/about"}>About</Link></li>
-            <li className='text-xl font-semibold text-cyan-700'>SETTING</li>
+            <li className='text-xl font-semibold text-cyan-700'><Link to={"/Cart"}>Cart({cartArr.length})</Link></li>
+            <li className='text-xl font-semibold text-cyan-700'><Link to="/Grosery">Grocery</Link></li>
           </ul>
         </nav>
       </header>

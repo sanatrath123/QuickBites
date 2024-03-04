@@ -4,6 +4,7 @@ import FoodCard from "./FoodCard";
 import About from "./About";
 import ResturantMenu from "./ResturantMenu";
 import MenuCard from "./MenuCard";
+import Cart from "./Cart";
 
  export {
   Body ,
@@ -12,6 +13,8 @@ import MenuCard from "./MenuCard";
   About,
 ResturantMenu,
 MenuCard,
+Cart
+
 
  }
 

@@ -1,26 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import MenuCard from "./MenuCard";
 import useResturantMenu from "../utils/useResturantMenu";
+import MenuSection from "./MenuSection";
 
 
 function ResturantMenu() {
   const { resId } = useParams();
 const resinfo = useResturantMenu(resId)
-
-//heading values
+const [showtoggle , setShowtoggle] = useState(null)
+//heading values always be a obj
   const Headitem = resinfo?.cards?.[2]?.card?.card?.info;
   const { name, areaName, avgRatingString, costForTwoMessage, cuisines } = Headitem || {};
 
-  //meny items array
-  const ItemMenu = resinfo?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards || []
+  //menu items array
+  const ItemMenu = resinfo?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards || []
+
+  //took all the iteam categories
+const ItemCategories = ItemMenu?.filter((item)=>(
+  item?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+))
+
+
 
 
 
 return (
   Headitem ? (
     <div className="flex justify-center flex-col items-center">
-      <div className="bg-slate-300 w-2/4 h-32 mt-8 p-2">
+      <div className="bg-amber-300 w-2/4 h-32 mt-8 p-2">
         <div className="flex flex-wrap justify-between">
           <h1 className="text-2xl m-2">{name}</h1>
           <span className="my-2 mx-1">{avgRatingString}</span>
@@ -32,10 +39,20 @@ return (
         </div>
       </div>
       <h1 className="flex justify-start m-2">MENU</h1>
-      <div className="w-2/4 mt-4 p-2 h-screen bg-zinc-300">
-        {ItemMenu.map((item, index) => (
-          <MenuCard key={index} {...item} />
-        ))}
+      <div className="w-7/12 mt-4 p-2">
+    {ItemCategories.map((item,index)=>(
+    
+    <MenuSection key={item?.card?.card?.title} 
+    {...item}
+    showtoggle={index === showtoggle ? true : false}
+    SetShowtoggle = {
+      ()=>{ showtoggle===index ? 
+        setShowtoggle(null)
+        :setShowtoggle(index)}}
+    />
+     
+    ))}
+    
       </div>
     </div>
   ) : 

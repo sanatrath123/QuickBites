@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import {About ,Body ,ResturantMenu} from './components/index.js'
+import {About ,Body ,ResturantMenu,Cart} from './components/index.js'
 import { createBrowserRouter , RouterProvider} from 'react-router-dom'
+//import Grosery from "./components/Grosery"
+import { Provider } from 'react-redux'
+import {store} from './store/Store.js'
+
+//implimanting lazy loading for grocery section
+const Grosery = lazy(()=>import('./components/Grosery'))
+
 
 
 const Approute = createBrowserRouter([
@@ -26,7 +33,17 @@ const Approute = createBrowserRouter([
       {
         path: "/resturant/:resId",
         element:<ResturantMenu  />
-      }
+      },
+      {
+        path:"/Grosery",
+        element: <Suspense fallback={<h1 className='text-center'>LOADING</h1>}>
+          <Grosery/>
+        </Suspense>
+      },
+      {
+        path:"/Cart",
+        element:<Cart/>
+      },
       
     ]
   }
@@ -35,8 +52,9 @@ const Approute = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
- <React.StrictMode>
+ <Provider store={store}>
+  <React.StrictMode>
   <RouterProvider router={Approute} />
  </React.StrictMode>
-
+ </Provider>
 )

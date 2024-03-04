@@ -5,7 +5,7 @@ function FoodCard(props) {
 
   return (
     
-    <div className='m-4 p-4 w-1/6 h-1/5'>
+    <div className='m-4 p-4 w-1/6 h-1/5 cursor-pointer'>
       <Link to={`/resturant/${res.info.id}`}>
       <img
         src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${res.info.cloudinaryImageId}`}
@@ -19,12 +19,15 @@ function FoodCard(props) {
            <h4 className='text-gray-700'>{res.info.locality}</h4>
           <h4 className='text-gray-700'>{res.info.avgRating}</h4>
           <h4 className='text-gray-700'>{res.info.deliveryTime}</h4>
-      <button className="w-2/6 bg-yellow-500 m-1 p-1">ADD</button>
+      
 
       </Link>
       </div>
       
   );
 }
+
+
+
 
 export default FoodCard;
